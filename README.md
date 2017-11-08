@@ -21,7 +21,7 @@ imports, exports, requires, identifiers (variables), and scopes. Using this
 information it can locate the origin of any identifier. It does not and will not
 track properties (ex. `identifier.property`), see below for more info.
 
-## I configured {babel,eslint,flow,webpack,etc} to avoid '../' in my imports. How can I configure `js-hyperclick`?
+## I configured {babel,eslint,flow,etc} to avoid '../' in my imports. How can I configure `js-hyperclick`?
 
 First, I think it's a bad idea to do that and I never configure my projects this
 way. In a twitter conversation to see if we could standardize this across
@@ -46,6 +46,14 @@ it. If you keep your common modules in `src/lib` you can add this to your
 ```
 
 With that in place `require('foo')` or `import 'foo'` with both locate your `src/lib/foo` module.
+
+## I configured webpack aliases to make my imports prettier. How can I configure `js-hyperclick`?
+Enable the webpack option and give the path of your webpack config file.
+
+Note that this depends on the extension being able to load the webpack config.
+If you have complicated project code being imported into webpack config, this
+may not work (for example, a create-react-app eject fails to load). The errors
+will be reported in the developer console.
 
 ## Why does `require('./otherfile')` open `otherfile.js` instead of `otherfile.jsx`?
 
